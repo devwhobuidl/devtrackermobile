@@ -1,9 +1,6 @@
 {
   "cli": {
-    "version": ">= 12.0.0",
-    "appExtensions": {
-      "expo-notifications": {}
-    }
+    "version": ">= 12.0.0"
   },
   "build": {
     "development": {
