@@ -1,78 +1,26 @@
-import {
-  useCssElement,
-  useNativeVariable as useFunctionalVariable,
-} from "react-native-css";
-
-import { Link as RouterLink } from "expo-router";
-import Animated from "react-native-reanimated";
-import React from "react";
-import {
-  View as RNView,
-  Text as RNText,
+import { styled } from "nativewind";
+import { 
+  View as RNView, 
+  Text as RNText, 
+  ScrollView as RNScrollView, 
+  TextInput as RNTextInput, 
   Pressable as RNPressable,
-  ScrollView as RNScrollView,
-  TouchableHighlight as RNTouchableHighlight,
-  TextInput as RNTextInput,
-  StyleSheet,
+  TouchableHighlight as RNTouchableHighlight
 } from "react-native";
+import { Link as RouterLink } from "expo-router";
 
-// CSS-enabled Link
-export const Link = (
-  props: React.ComponentProps<typeof RouterLink> & { className?: string }
-) => {
-  return useCssElement(RouterLink, props, { className: "style" });
-};
+// Create styled versions of standard components for NativeWind v4
+export const View = styled(RNView);
+export const Text = styled(RNText);
+export const ScrollView = styled(RNScrollView);
+export const TextInput = styled(RNTextInput);
+export const Pressable = styled(RNPressable);
+export const TouchableHighlight = styled(RNTouchableHighlight);
+export const Link = styled(RouterLink);
 
-// CSS Variable hook
-export const useCSSVariable =
-  process.env.EXPO_OS !== "web"
-    ? useFunctionalVariable
-    : (variable: string) => `var(${variable})`;
-
-// View
-export type ViewProps = React.ComponentProps<typeof RNView> & {
-  className?: string;
-};
-
-export const View = (props: ViewProps) => {
-  return useCssElement(RNView, props, { className: "style" });
-};
-View.displayName = "CSS(View)";
-
-// Text
-export const Text = (
-  props: React.ComponentProps<typeof RNText> & { className?: string }
-) => {
-  return useCssElement(RNText, props, { className: "style" });
-};
-Text.displayName = "CSS(Text)";
-
-// ScrollView
-export const ScrollView = (
-  props: React.ComponentProps<typeof RNScrollView> & {
-    className?: string;
-    contentContainerClassName?: string;
-  }
-) => {
-  return useCssElement(RNScrollView, props, {
-    className: "style",
-    contentContainerClassName: "contentContainerStyle",
-  });
-};
-ScrollView.displayName = "CSS(ScrollView)";
-
-// Pressable
-export const Pressable = (
-  props: React.ComponentProps<typeof RNPressable> & { className?: string }
-) => {
-  return useCssElement(RNPressable, props, { className: "style" });
-};
-Pressable.displayName = "CSS(Pressable)";
-
-// TextInput
-export const TextInput = (
-  props: React.ComponentProps<typeof RNTextInput> & { className?: string }
-) => {
-  return useCssElement(RNTextInput, props, { className: "style" });
-};
-TextInput.displayName = "CSS(TextInput)";
+// Types for better DX
+export type ViewProps = React.ComponentProps<typeof View>;
+export type TextProps = React.ComponentProps<typeof Text>;
+export type ScrollViewProps = React.ComponentProps<typeof ScrollView>;
+export type TextInputProps = React.ComponentProps<typeof TextInput>;
+export type PressableProps = React.ComponentProps<typeof Pressable>;
