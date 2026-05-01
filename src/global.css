@@ -1,28 +1,9 @@
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/preflight.css" layer(base);
-@import "tailwindcss/utilities.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Platform-specific font families */
-@media android {
+@layer base {
   :root {
-    --font-mono: monospace;
-    --font-rounded: normal;
-    --font-serif: serif;
-    --font-sans: normal;
-  }
-}
-
-@media ios {
-  :root {
-    --font-mono: ui-monospace;
-    --font-serif: ui-serif;
-    --font-sans: system-ui;
-    --font-rounded: ui-rounded;
-  }
-}
-
-@layer theme {
-  @theme {
     --color-crypto-bg: #0a0b10;
     --color-crypto-card: #151921;
     --color-crypto-accent: #00ffbd;
